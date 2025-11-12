@@ -11,8 +11,8 @@ int main()
 	double tp, tk, z;
 	int n;
 
-	cout << "gp = "; cin >> tp;
-	cout << "gk = "; cin >> tk;
+	cout << "tp = "; cin >> tp;
+	cout << "tk = "; cin >> tk;
 	cout << "n = "; cin >> n;
 
 	double dt = (tk - tp) / n;
@@ -31,11 +31,12 @@ int main()
 	cout << "----------------------------------------" << endl;
 	return 0;
 }
+
 double f(const double x)
 {
 	if (abs(x) >= 1)
 	{
-		return (pow(sin(x), 2) + pow(sin(x), 2)) / (1 + pow(cos(x), 2));
+		return (2.0 * pow(sin(x), 2)) / (1 + pow(cos(x), 2));
 	}
 	else
 	{
@@ -44,11 +45,13 @@ double f(const double x)
 		double S = a;
 		int n = 0;
 
+		double x4 = x * x * x * x;
+
 		do
 		{
 			n++;
 
-			double R = pow(x, 4) / ((4.0 * n + 1.0) * (4.0 * n) * (4.0 * n - 1.0) * (4.0 * n - 2.0));
+			double R = x4 / ((4.0 * n + 1.0) * (4.0 * n) * (4.0 * n - 1.0) * (4.0 * n - 2.0));
 
 			a *= R;
 			S += a;
